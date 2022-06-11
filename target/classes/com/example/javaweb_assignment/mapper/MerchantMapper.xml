@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.javaweb_assignment.mapper.MerchantMapper">
+    <update id="updateMer" parameterType="Merchant">
+        update merchant set name = #{name},password = #{password},info = #{info} where id = #{id}
+    </update>
+
+    <delete id="deleteMerById" parameterType="String" >
+        delete from merchant where id = #{id}
+    </delete>
+
+    <select id="queryMerById" parameterType="String" resultType="Merchant">
+        select * from merchant where id = #{id}
+    </select>
+
+    <insert id="insertMer" parameterType="Merchant" >
+        insert  into merchant (id,name,password,info,registerDate) values (#{id},#{name},#{password},#{info},#{registerDate})
+    </insert>
+
+    <select id="getMerchants" resultType="Merchant">
+        select * from merchant
+    </select>
+
+</mapper>

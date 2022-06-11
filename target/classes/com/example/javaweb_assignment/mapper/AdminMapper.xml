@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.javaweb_assignment.mapper.AdminMapper">
+    <insert id = "insertAdmin" parameterType="Admin">
+        insert into admin(name,password) values (#{name},#{password})
+    </insert>
+
+    <delete id="deleteAdminByName" parameterType="String">
+        delete from admin where name = #{name}
+    </delete>
+
+    <select id="queryAdminByName" parameterType="String" resultType="Admin">
+        select * from admin where name =#{name}
+    </select>
+
+    <update id="updateAdmin" parameterType="Admin">
+        update admin set password = #{password} where name =#{name}
+    </update>
+</mapper>
