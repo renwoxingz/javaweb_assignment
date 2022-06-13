@@ -46,6 +46,7 @@ public class MerchantServiceImpl implements MerchantService {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         GoodsMapper goodsMapper = sqlSession.getMapper(GoodsMapper.class);
         boolean flag = goodsMapper.insertGoods(goods);
+        if (flag) sqlSession.commit();
         sqlSession.close();
         return flag;
     }
@@ -59,6 +60,7 @@ public class MerchantServiceImpl implements MerchantService {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         GoodsMapper goodsMapper = sqlSession.getMapper(GoodsMapper.class);
         boolean flag = goodsMapper.deleteGoodsById(id);
+        if (flag) sqlSession.commit();
         sqlSession.close();
         return flag;
     }
@@ -72,6 +74,7 @@ public class MerchantServiceImpl implements MerchantService {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         GoodsMapper goodsMapper = sqlSession.getMapper(GoodsMapper.class);
         boolean flag = goodsMapper.updateGoods(goods);
+        if (flag) sqlSession.commit();
         sqlSession.close();
         return flag;
     }

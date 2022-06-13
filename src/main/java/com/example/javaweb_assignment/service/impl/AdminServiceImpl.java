@@ -47,6 +47,7 @@ public class AdminServiceImpl implements AdminService {
             boolean flag;
             Admin admin = new Admin(name,password);
             flag = adminMapper.insertAdmin(admin);
+            sqlSession.commit();
             return flag;
         }
         catch (Exception e){
@@ -66,6 +67,7 @@ public class AdminServiceImpl implements AdminService {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         MerchantMapper merchantMapper = sqlSession.getMapper(MerchantMapper.class);
         boolean flag = merchantMapper.insertMer(merchant);
+        if (flag) sqlSession.commit();
         sqlSession.close();
         return flag;
     }
@@ -79,6 +81,7 @@ public class AdminServiceImpl implements AdminService {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         MerchantMapper merchantMapper = sqlSession.getMapper(MerchantMapper.class);
         boolean flag = merchantMapper.deleteMerById(id);
+        if (flag) sqlSession.commit();
         sqlSession.close();
         return flag;
     }
@@ -92,6 +95,7 @@ public class AdminServiceImpl implements AdminService {
         SqlSession sqlSession = sqlSessionFactory.openSession();
         MerchantMapper merchantMapper = sqlSession.getMapper(MerchantMapper.class);
         boolean flag = merchantMapper.updateMer(merchant);
+        if (flag) sqlSession.commit();
         sqlSession.close();
         return flag;
     }
